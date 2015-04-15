@@ -1,0 +1,6 @@
+{
+  "socket": {
+    "host": "localhost",
+    "port": 10000
+  }
+}

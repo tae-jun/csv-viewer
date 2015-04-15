@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="hcc">
+
+<head lang="ko">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <title>i2r</title>
+
+    <link rel="stylesheet" href="/bower/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/app.css">
+
+    <script src="/bower/jquery/dist/jquery.min.js"></script>
+
+    <script src="/bower/angular/angular.min.js"></script>
+    <script src="/bower/angular-route/angular-route.min.js"></script>
+    <script src="/bower/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower/angular-material/angular-material.min.js"></script>
+
+    <script src="/app.js"></script>
+
+</head>
+
+<body layout="row" style="overflow-y: hidden">
+
+<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-sm')">
+
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            <span>i2r</span>
+        </div>
+    </md-toolbar>
+
+    <md-content flex ng-controller="logListCtrl">
+
+        <md-subheader class="md-primary">Log Files</md-subheader>
+        <div layout="column">
+            <md-button
+                    ng-click="closeMenu()"
+                    ng-repeat="logName in logNames"
+                    href="#/log/{{logName}}"
+                    class="job-nav-btn"
+                    layout="row"
+                    style="padding-left: 15px; text-decoration: none;">
+                <span flex>{{logName}}</span>
+            </md-button>
+        </div>
+
+    </md-content>
+
+</md-sidenav>
+
+<div layout="column" flex id="content">
+    <md-toolbar layout="row" ng-controller="toolbarCtrl" ng-click="openMenu()">
+        <div class="md-toolbar-tools">
+            <md-button hide-gt-sm
+                       style="margin-right: 20px;">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </md-button>
+
+            <span ng-repeat="title in titles">
+                {{title}}
+                <img ng-if="!$last" src="img/docArrow.png" style="width: 16px;height: 16px;margin-right: 10px">
+            </span>
+
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <md-content layout="column" flex class="md-padding" ng-view></md-content>
+
+</div>
+
+</body>
+
+</html>
