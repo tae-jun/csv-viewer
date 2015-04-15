@@ -1,10 +1,11 @@
+*.csv
+
 .idea
 .DS_Store
 
 # Logs
 logs
 *.log
-log
 
 # Runtime data
 pids

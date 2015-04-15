@@ -1,0 +1,59 @@
+<div hide-sm
+     layout="row" layout-align="center">
+    <md-button href="/download/{{logName}}"
+               class="md-raised md-primary"
+               style="text-decoration: none;
+               margin-bottom: 10px;">
+        Download
+    </md-button>
+</div>
+
+<div flex>
+    <div layout="row"
+         ng-repeat-start="node in nodes">
+        <md-button flex
+                   ng-click="selectNode(node)">
+            <span>
+                {{::node.name}}
+            </span>
+            <span class="badge">
+                {{::node.sensors.length}}
+            </span>
+        </md-button>
+    </div>
+
+    <div layout="row">
+        <div flex
+             ng-repeat-start="sensor in node.sensors"
+             ng-if="selectedNode == node.name">
+            <h3 layout="row">
+                <span style="margin-right: 10px">{{::sensor.name}}</span>
+                <!--<span flex></span>-->
+                <span class="badge">{{::sensor.log.length}}</span>
+            </h3>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>date</th>
+                    <th>value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="record in sensor.log">
+                    <td>{{record.date}}
+                    </th>
+                    <td>{{record.value}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div ng-repeat-end
+             ng-if="!$last"
+             style="width: 10px;"></div>
+    </div>
+
+
+    <md-divider ng-if="!$last" ng-repeat-end></md-divider>
+</div>
