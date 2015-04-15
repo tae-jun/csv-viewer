@@ -11,14 +11,22 @@ keys.forEach((key)=> {
     switch (key) {
         case'_':
             break;
+
         case'h':
         case'host':
             config.socket.host = val;
             break;
+
         case'p':
         case'port':
             config.socket.port = val;
             break;
+
+        case'l':
+        case'logDir':
+            config.logDir = val;
+            break;
+
         default:
             console.log('--- Invalid option "%s"', key);
             process.exit(1);

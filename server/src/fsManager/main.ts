@@ -10,6 +10,12 @@ var io:SocketIO.Server = require('../app').io;
 
 var socket:SocketIO.Socket;
 
+try {
+    fs.mkdirSync(config.logDir);
+}
+catch (e) {
+}
+
 // On socket.io connected
 io.on('connection', (_socket)=> {
     console.log('+++ New incoming socket.io connection');
@@ -53,9 +59,9 @@ export function getLogFile(fileName:string, callback:(err, file)=>void) {
     socket.emit('getLog', fileName, (data)=> {
         // Recoding euc-kr to utf-8
         // data is raw text
-        var iconv = new Iconv('euc-kr', 'utf-8');
-        var buff:Buffer = iconv.convert(data);
-        data = buff.toString();
+        //var iconv = new Iconv('euc-kr', 'utf-8');
+        //var buff:Buffer = iconv.convert(data);
+        //data = buff.toString();
 
         callback(null, data);
         var end = new Date().getTime();
