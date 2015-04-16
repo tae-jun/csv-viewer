@@ -26,17 +26,16 @@
         <div flex
              ng-repeat-start="sensor in node.sensors"
              ng-if="selectedNode == node.name">
-            <h3 layout="row">
+            <h1 class="md-headline" layout="row" layout-align="center center">
                 <span style="margin-right: 10px">{{::sensor.name}}</span>
-                <!--<span flex></span>-->
                 <span class="badge">{{::sensor.log.length}}</span>
-            </h3>
+            </h1>
 
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>date</th>
-                    <th>value</th>
+                    <th>Time</th>
+                    <th>Value</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -1,3 +1,5 @@
+import path = require('path');
+
 global.config = require('./config');
 // Get default config
 var config:any = global.config;
@@ -24,7 +26,7 @@ keys.forEach((key)=> {
 
         case'l':
         case'logDir':
-            config.logDir = val;
+            config.logDir = path.resolve(config.logDir, val);
             break;
 
         default:

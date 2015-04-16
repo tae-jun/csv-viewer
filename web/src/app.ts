@@ -19,7 +19,8 @@ var app = angular.module('hcc', dependencies)
         $routeProvider
 
             .when('/', {
-                template: '<div>List</div>'
+                templateUrl: 'tpl/index.view.tpl.html',
+                controller: 'indexViewCtrl'
             })
 
             .when('/log/:logName', {

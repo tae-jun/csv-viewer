@@ -1,10 +1,7 @@
 import path = require('path');
 import fs = require('fs');
-var Iconv = require('iconv').Iconv;
 
 var config = global.config.fsManager;
-
-var ss = require('socket.io-stream');
 
 var io:SocketIO.Server = require('../app').io;
 
@@ -57,12 +54,6 @@ export function getLogFile(fileName:string, callback:(err, file)=>void) {
     var start = new Date().getTime();
     // Request to client
     socket.emit('getLog', fileName, (data)=> {
-        // Recoding euc-kr to utf-8
-        // data is raw text
-        //var iconv = new Iconv('euc-kr', 'utf-8');
-        //var buff:Buffer = iconv.convert(data);
-        //data = buff.toString();
-
         callback(null, data);
         var end = new Date().getTime();
         console.log('+++ FsManager: getLog:%s - %dms', fileName, (end - start));

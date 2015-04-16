@@ -1,8 +1,9 @@
 {
-  "name": "hadoop-cuda-chart-web",
+  "name": "csv-viewer",
   "private": true,
   "version": "0.0.0",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-concat": "^2.4.3",
@@ -14,6 +15,5 @@
     "gulp-watch-sequence": "0.0.4",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2"
-  },
-  "dependencies": {}
+  }
 }
